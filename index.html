@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-<script src="vendor/jquery/jquery.min.js"></script>
 
 <head>
 
@@ -10,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Creative - Start Bootstrap Theme</title>
+    <title>Jacob Szemanski</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -44,7 +43,7 @@
                 <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
                     <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
                 </button>
-                <a class="navbar-brand page-scroll" href="#page-top">Start Bootstrap</a>
+                <a class="navbar-brand page-scroll" href="#page-top">Jacob Szemanski</a>
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
@@ -87,7 +86,7 @@
                     <h2 class="section-heading">About</h2>
                     <hr class="light">
                     <p class="text-faded">Future graduate of the Actualize Cohort</p>
-                    <a href="#services" class="page-scroll btn btn-default btn-xl sr-button">See work</a>
+                    <a href="https://github.com/jjsze13" class="page-scroll btn btn-default btn-xl sr-button">See work</a>
                 </div>
             </div>
         </div>
@@ -135,143 +134,7 @@
             </div>
         </div>
     </section>
-
-    <section class="no-padding" id="portfolio">
-      <div>
-<meta charset="utf-8">
-<style>
-
-body 
-form {
-  position: relative;
-  top: 40em;
-  left: 1em;
-}
-
-path {
-  fill-rule: evenodd;
-  stroke: #333;
-  stroke-width: 2px;
-}
-
-.sun path {
-  fill: #6baed6;
-}
-
-.planet path {
-  fill: #9ecae1;
-}
-
-.annulus path {
-  fill: #c6dbef;
-}
-
-</style>
-<form>
-  <input type="radio" name="reference" id="ref-annulus">
-  <label for="ref-annulus">Annulus</label><br>
-  <input type="radio" name="reference" id="ref-planet" checked>
-  <label for="ref-planet">Planets</label><br>
-  <input type="radio" name="reference" id="ref-sun">
-  <label for="ref-sun">Sun</label>
-</form>
-<script src="https://d3js.org/d3.v4.min.js"></script>
-<script>
-
-var width = 960,
-    height = 500,
-    radius = 80,
-    x = Math.sin(2 * Math.PI / 3),
-    y = Math.cos(2 * Math.PI / 3);
-
-var offset = 0,
-    speed = 4,
-    start = Date.now();
-
-var svg = d3.select("body").append("svg")
-    .attr("width", width)
-    .attr("height", height)
-  .append("g")
-    .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")scale(.55)")
-  .append("g");
-
-var frame = svg.append("g")
-    .datum({radius: Infinity});
-
-frame.append("g")
-    .attr("class", "annulus")
-    .datum({teeth: 80, radius: -radius * 5, annulus: true})
-  .append("path")
-    .attr("d", gear);
-
-frame.append("g")
-    .attr("class", "sun")
-    .datum({teeth: 16, radius: radius})
-  .append("path")
-    .attr("d", gear);
-
-frame.append("g")
-    .attr("class", "planet")
-    .attr("transform", "translate(0,-" + radius * 3 + ")")
-    .datum({teeth: 32, radius: -radius * 2})
-  .append("path")
-    .attr("d", gear);
-
-frame.append("g")
-    .attr("class", "planet")
-    .attr("transform", "translate(" + -radius * 3 * x + "," + -radius * 3 * y + ")")
-    .datum({teeth: 32, radius: -radius * 2})
-  .append("path")
-    .attr("d", gear);
-
-frame.append("g")
-    .attr("class", "planet")
-    .attr("transform", "translate(" + radius * 3 * x + "," + -radius * 3 * y + ")")
-    .datum({teeth: 32, radius: -radius * 2})
-  .append("path")
-    .attr("d", gear);
-
-d3.selectAll("input[name=reference]")
-  .data([radius * 5, Infinity, -radius])
-    .on("change", function(radius1) {
-      var radius0 = frame.datum().radius, angle = (Date.now() - start) * speed;
-      frame.datum({radius: radius1});
-      svg.attr("transform", "rotate(" + (offset += angle / radius0 - angle / radius1) + ")");
-    });
-
-d3.selectAll("input[name=speed]")
-    .on("change", function() { speed = +this.value; });
-
-function gear(d) {
-  var n = d.teeth,
-      r2 = Math.abs(d.radius),
-      r0 = r2 - 8,
-      r1 = r2 + 8,
-      r3 = d.annulus ? (r3 = r0, r0 = r1, r1 = r3, r2 + 20) : 20,
-      da = Math.PI / n,
-      a0 = -Math.PI / 2 + (d.annulus ? Math.PI / n : 0),
-      i = -1,
-      path = ["M", r0 * Math.cos(a0), ",", r0 * Math.sin(a0)];
-  while (++i < n) path.push(
-      "A", r0, ",", r0, " 0 0,1 ", r0 * Math.cos(a0 += da), ",", r0 * Math.sin(a0),
-      "L", r2 * Math.cos(a0), ",", r2 * Math.sin(a0),
-      "L", r1 * Math.cos(a0 += da / 3), ",", r1 * Math.sin(a0),
-      "A", r1, ",", r1, " 0 0,1 ", r1 * Math.cos(a0 += da / 3), ",", r1 * Math.sin(a0),
-      "L", r2 * Math.cos(a0 += da / 3), ",", r2 * Math.sin(a0),
-      "L", r0 * Math.cos(a0), ",", r0 * Math.sin(a0));
-  path.push("M0,", -r3, "A", r3, ",", r3, " 0 0,0 0,", r3, "A", r3, ",", r3, " 0 0,0 0,", -r3, "Z");
-  return path.join("");
-}
-
-d3.timer(function() {
-  var angle = (Date.now() - start) * speed,
-      transform = function(d) { return "rotate(" + angle / d.radius + ")"; };
-  frame.selectAll("path").attr("transform", transform);
-  frame.attr("transform", transform); // frame of reference
-});
-
-</script>
-      </div>   
+    <section class="no-padding" id="portfolio">  
         <div class="container-fluid">
             <div class="row no-gutter popup-gallery">
                 <div class="col-lg-4 col-sm-6">
@@ -372,7 +235,7 @@ d3.timer(function() {
         <div class="container text-center">
             <div class="call-to-action">
                 <h2>Resume</h2>
-                <a href="http://startbootstrap.com/template-overviews/creative/" class="btn btn-default btn-xl sr-button">Download</a>
+                <a href="https://drive.google.com/file/d/0B3dzZzQ8elcscERTdGd6Ykd4bU0/view?usp=sharing" class="btn btn-default btn-xl sr-button">Download</a>
             </div>
         </div>
     </aside>
@@ -391,14 +254,14 @@ d3.timer(function() {
                 </div>
                 <div class="col-lg-4 text-center">
                     <i class="fa fa-envelope-o fa-3x sr-contact"></i>
-                    <p><a href="mailto:your-email@your-domain.com">feedback@startbootstrap.com</a></p>
+                    <p><a href="mailto:jjsze13@gmail.com">jjsze13@gmail.com</a></p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- jQuery -->
-    
+    <script src="vendor/jquery/jquery.min.js"></script>
 
     <!-- Bootstrap Core JavaScript -->
     <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
